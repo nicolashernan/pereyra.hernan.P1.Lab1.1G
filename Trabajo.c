@@ -98,7 +98,7 @@ int menuTrabajo()
 }
 
 
-int altaTrabajo(eMoto mot[],int tamM,eTipo tip[],int tamT,eColor col[],int tamC,eServicio ser[],int tamS,eTrabajo tra[],int tamTRA,int* pNextId)
+int altaTrabajo(eMoto mot[],int tamM,eTipo tip[],int tamT,eColor col[],int tamC,eServicio ser[],int tamS,eTrabajo tra[],int tamTRA,eCliente cli[],int tamCLI,int* pNextId)
 {
 	int todoOk = 0;
 	int indiceLibre;
@@ -129,7 +129,7 @@ int altaTrabajo(eMoto mot[],int tamM,eTipo tip[],int tamT,eColor col[],int tamC,
 			{
 				tra[indiceLibre].id = *pNextId;
 				system("cls");
-				listarMotos(mot,tamM,tip,tamT,col,tamC);
+				listarMotos(mot,tamM,tip,tamT,col,tamC,cli,tamCLI);
 
 				printf("Ingrese el id de motocicleta: \n");
 				fflush(stdin);

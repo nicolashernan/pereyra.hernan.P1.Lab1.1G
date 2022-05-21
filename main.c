@@ -15,6 +15,7 @@
 #include "Color.h"
 #include "Servicio.h"
 #include "Trabajo.h"
+#include "Cliente.h"
 
 
 #define TAMM 10
@@ -22,6 +23,7 @@
 #define TAMC 5
 #define TAMS 4
 #define TAMTRA 10
+#define TAMCLI 5
 
 int main()
 {
@@ -61,6 +63,15 @@ int main()
 		{20003,"Cadena",390}
 	};
 
+	eCliente clientes[TAMCLI] =
+	{
+		{500,"Juan",'m'},
+		{501,"Nicolas",'m'},
+		{502,"Yamila",'f'},
+		{503,"Veronica",'f'},
+		{504,"Leonardo",'m'}
+	};
+
 
 	inicializarMotos(motos,TAMM);
 	inicializarTrabajos(trabajos,TAMTRA);
@@ -72,7 +83,7 @@ int main()
 		{
 			case 1:
 
-				cant1 = altaMoto(motos,TAMM,tipos,TAMT,colores,TAMC,&nextId);
+				cant1 = altaMoto(motos,TAMM,tipos,TAMT,colores,TAMC,clientes,TAMCLI,&nextId);
 				if(cant1 == 1)
 				{
 					contMotos++;
@@ -81,7 +92,7 @@ int main()
 			case 2:
 				if(contMotos>0)
 				{
-					modificarMoto(motos,TAMM,tipos,TAMT,colores,TAMC);
+					modificarMoto(motos,TAMM,tipos,TAMT,colores,TAMC,clientes,TAMCLI);
 				}
 				else
 				{
@@ -93,7 +104,7 @@ int main()
 			case 3:
 				if(contMotos > 0)
 				{
-					cant2 = bajaMoto(motos,TAMM,tipos,TAMT,colores,TAMC);
+					cant2 = bajaMoto(motos,TAMM,tipos,TAMT,colores,TAMC,clientes,TAMCLI);
 					if(cant2 == 1)
 					{
 						contMotos--;
@@ -111,7 +122,7 @@ int main()
 				{
 					system("cls");
 					ordenarMotosTipoId(motos,TAMM);
-					listarMotos(motos,TAMM,tipos,TAMT,colores,TAMC);
+					listarMotos(motos,TAMM,tipos,TAMT,colores,TAMC,clientes,TAMCLI);
 					system("pause");
 				}
 				else
@@ -139,7 +150,7 @@ int main()
 			case 8:
 				if(contMotos>0)
 				{
-					altaTrabajo(motos,TAMM,tipos,TAMT,colores,TAMC,servicios,TAMS,trabajos,TAMTRA,&nexIdTrabajo);
+					altaTrabajo(motos,TAMM,tipos,TAMT,colores,TAMC,servicios,TAMS,trabajos,TAMTRA,clientes,TAMCLI,&nexIdTrabajo);
 				}
 				else
 				{
@@ -149,6 +160,88 @@ int main()
 				}
 			break;
 			case 9:
+				if(contMotos > 0)
+				{
+					system("cls");
+					mostrarMotosPorColorSeleccionado(motos,TAMM,tipos,TAMT,colores,TAMC);
+					system("pause");
+				}
+				else
+				{
+					system("cls");
+					printf("No hay motos cargadas en el sistema.\n");
+				    system("pause");
+				}
+			break;
+			case 10:
+				if(contMotos>0)
+				{
+					system("cls");
+					promedioDePuntajesDeTipoSeleccionado(motos,TAMM);
+					system("pause");
+				}
+				else
+				{
+					system("cls");
+					printf("No hay motos cargadas en el sistema.\n");
+					system("pause");
+				}
+			break;
+			case 11:
+				if(contMotos>0)
+				{
+					system("cls");
+					motosDeMayorCilindrada(motos,TAMM,tipos,TAMT,colores,TAMC);
+					system("pause");
+				}
+				else
+				{
+					system("cls");
+					printf("No hay motos cargadas en el sistema.\n");
+					system("pause");
+				}
+			break;
+			case 12:
+				if(contMotos>0)
+				{
+					system("cls");
+					mostrarMotosSeparadasPorTipo(motos,TAMM,tipos,TAMT,colores,TAMC);
+					system("pause");
+				}
+				else
+				{
+					system("cls");
+					printf("No hay motos cargadas en el sistema.\n");
+					system("pause");
+				}
+			break;
+			case 13:
+				if(contMotos>0)
+				{
+					cantidadDeMotosporTipoYcolorSeleccionado(motos,TAMM,colores,TAMC,tipos,TAMT);
+					system("pause");
+				}
+				else
+				{
+						system("cls");
+						printf("No hay motos cargadas en el sistema.\n");
+						system("pause");
+				}
+			break;
+			case 14:
+				if(contMotos>0)
+				{
+					coloresMasElejidos(motos,TAMM);
+					system("pause");
+				}
+				else
+				{
+					system("cls");
+					printf("No hay motos cargadas en el sistema.\n");
+					system("pause");
+				}
+			break;
+			case 15:
 				salir = 's';
 			break;
 			default:
